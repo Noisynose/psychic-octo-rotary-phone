@@ -2,14 +2,19 @@
   "name": "psychic-octo-rotary-phone",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.ts",
   "scripts": {
-    "dev": "http-server -c-1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite --port 8080",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "author": "aconsigny",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
+  },
+  "dependencies": {
+    "pixi.js": "^7.3.2"
   }
 }
