@@ -22,6 +22,13 @@ if (appRoot) {
     key.position.set(randomX, randomY);
     app.stage.addChild(key);
 
+    // Create a smaller key sprite
+    const smallerKey = PIXI.Sprite.from('/key.svg');
+    smallerKey.scale.set(0.5); // Adjust the scale as needed
+    smallerKey.anchor.set(1); // Set the anchor point to the center
+    player.addChild(smallerKey);
+    smallerKey.visible = false; // Hide the smaller key initially
+
     // Exit
     const exit = PIXI.Sprite.from('/exit.svg');
     app.stage.addChild(exit);
@@ -55,5 +62,23 @@ if (appRoot) {
         if (keys['KeyD']) {
             player.x += speed;
         }
+
+        // Check for collision between player and key
+        if (isColliding(player, key)) {
+            // Player picked up the key
+            app.stage.removeChild(key);
+            smallerKey.visible = true;
+            console.log('Key picked up!');
+        }
     });
 }
+
+// Function to check collision between two sprites
+function isColliding(spriteA: PIXI.Sprite, spriteB: PIXI.Sprite): boolean {
+    const boundsA = spriteA.getBounds();
+    const boundsB = spriteB.getBounds();
+    return boundsA.x + boundsA.width > boundsB.x &&
+           boundsA.x < boundsB.x + boundsB.width &&
+           boundsA.y + boundsA.height > boundsB.y &&
+           boundsA.y < boundsB.y + boundsB.height;
+  }
