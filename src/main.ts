@@ -1,14 +1,18 @@
 import * as PIXI from 'pixi.js';
 
-const app = new PIXI.Application<HTMLCanvasElement>({ width: 640, height: 360 });
+const appRoot = document.getElementById('app');
 
-document.body.appendChild(app.view);
+if (appRoot) {
+    const app = new PIXI.Application<HTMLCanvasElement>();
 
-const sprite = PIXI.Sprite.from('test-asset.png');
-app.stage.addChild(sprite);
-
-let elapsed = 0.0;
-app.ticker.add((delta) => {
-    elapsed += delta;
-    sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
-});
+    document.body.appendChild(app.view);
+    
+    const sprite = PIXI.Sprite.from('test-asset.png');
+    app.stage.addChild(sprite);
+    
+    let elapsed = 0.0;
+    app.ticker.add((delta) => {
+        elapsed += delta;
+        sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
+    });
+}

@@ -1,10 +1,23 @@
 <!doctype html>
 <html>
   <head>
-    <script src="https://pixijs.download/release/pixi.js"></script>
+    <style>
+      html, body {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello PixiJS</h1>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
