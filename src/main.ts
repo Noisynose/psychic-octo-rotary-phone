@@ -29,7 +29,7 @@ if (appRoot) {
     // Set up keyboard event listeners
     const keys: Record<string, boolean> = {};
     window.addEventListener('keydown', (event) => {
-    keys[event.code] = true;
+        keys[event.code] = true;
     });
 
     window.addEventListener('keyup', (event) => {
@@ -38,7 +38,7 @@ if (appRoot) {
 
     // Update player position based on keyboard input
     app.ticker.add(() => {
-        const speed = 5;
+        const speed = 2.5;
 
         if (keys['KeyW']) {
             player.y -= speed;
