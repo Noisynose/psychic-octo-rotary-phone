@@ -13,7 +13,7 @@ if (appRoot) {
     player.y = app.screen.height / 2;
     app.stage.addChild(player);
 
-    // Create a sprite using the key texture
+    // Key
     const key = PIXI.Sprite.from('/key.svg');
 
     // Generate random coordinates for the key's position
@@ -21,4 +21,8 @@ if (appRoot) {
     const randomY = Math.random() * (app.screen.height - key.height);
     key.position.set(randomX, randomY);
     app.stage.addChild(key);
+
+    // Exit
+    const exit = PIXI.Sprite.from('/exit.svg');
+    app.stage.addChild(exit);
 }
