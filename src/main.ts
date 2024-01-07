@@ -25,4 +25,35 @@ if (appRoot) {
     // Exit
     const exit = PIXI.Sprite.from('/exit.svg');
     app.stage.addChild(exit);
+
+    // Set up keyboard event listeners
+    const keys: Record<string, boolean> = {};
+    window.addEventListener('keydown', (event) => {
+    keys[event.code] = true;
+    });
+
+    window.addEventListener('keyup', (event) => {
+        keys[event.code] = false;
+    });
+
+    // Update player position based on keyboard input
+    app.ticker.add(() => {
+        const speed = 5;
+
+        if (keys['KeyW']) {
+            player.y -= speed;
+        }
+
+        if (keys['KeyA']) {
+            player.x -= speed;
+        }
+
+        if (keys['KeyS']) {
+            player.y += speed;
+        }
+
+        if (keys['KeyD']) {
+            player.x += speed;
+        }
+    });
 }
